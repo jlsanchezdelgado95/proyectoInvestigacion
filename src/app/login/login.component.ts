@@ -46,8 +46,4 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  desconectarse() {
-    this.authService.salirSesionService();
-  }
-
 }

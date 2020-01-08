@@ -13,16 +13,26 @@ export class MainComponent implements OnInit {
 
   email;
 
-  constructor(private auth: AuthenticationService, private router: Router) { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {//Controlo que no entran en el main sin loguearse
-    this.auth.userData.subscribe(res => {
-      this.email = res.email;
-      console.log(this.email);
-      if (this.email == null || this.email == undefined) {
-        this.router.navigateByUrl("/login");
+    this.authService.logeado().subscribe(auth => {
+      if (auth) {
+        console.log("Logueado");
+        this.authService.userData.subscribe(res => {
+          this.email = res.email;
+        })
+      } else {
+        console.log("No logueado");
+        this.router.navigateByUrl('/login');
       }
-    });
+    })
+  }
+
+  desconectarse() {
+    this.authService.salirSesionService();
+    this.email = undefined;
+    this.router.navigateByUrl("/login");
   }
 
 }
