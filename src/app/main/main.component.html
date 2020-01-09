@@ -1,18 +1,18 @@
 <body class="pricing py-4">
-    <div class="container">
-        <div class="row">
+    <div class="container h-100">
+        <div class="row h-100">
             <!-- Free Tier -->
-            <div class="col-lg-4">
-                <div class="card mb-5 mb-lg-0">
-                    <div class="card-body tamanyo-card">
+            <div class="p-4 h-100">
+                <div class="card h-100">
+                    <div class="card-body">
                         <h3 class="card-title text-uppercase text-center">Bienvenido: {{email}}</h3>
+                        <h4 class="text-center">Tus tareas</h4>
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Fecha</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -20,19 +20,19 @@
                                     <th scope="row">1</th>
                                     <td>Mark</td>
                                     <td>Otto</td>
-                                    <td>@mdo</td>
+                                    <td class="text-center"><i class="fas fa-search-plus"></i><i class="fas fa-minus"></i></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">2</th>
                                     <td>Jacob</td>
                                     <td>Thornton</td>
-                                    <td>@fat</td>
+                                    <td class="text-center"><i class="fas fa-search-plus"></i><i class="fas fa-minus"></i></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">3</th>
                                     <td>Larry</td>
                                     <td>the Bird</td>
-                                    <td>@twitter</td>
+                                    <td class="text-center"><i class="fas fa-search-plus"></i><i class="fas fa-minus"></i></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -50,7 +50,11 @@
                             <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status
                                 Reports</li>
                         </ul>-->
-                        <a class="btn btn-block btn-info text-uppercase">Cerrar sesión</a>
+                    </div>
+                    <div class="card-footer">
+                        <h4 class="text-center mb-3">Nueva tarea <h2><i class="fas fa-plus-circle"></i></h2>
+                        </h4>
+                        <a class="btn btn-block btn-info text-uppercase text-white" (click)="desconectarse()">Cerrar sesión</a>
                     </div>
                 </div>
             </div>
