@@ -18,17 +18,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';*/
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 //Le añado el servicio
-import { AuthenticationService } from './login/authentication.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { PaginaNoEncontradaComponent } from './pagina-no-encontrada/pagina-no-encontrada.component';
-
-/*const config = {
-  apiKey: "AIzaSyBrpSimTHUrfojDS-BA3GjzKru9FfnuWDM",
-  authDomain: "proyectoinvestigacion-4e50b.web.app",
-  databaseURL: "https://proyectoinvestigacion-4e50b.firebaseio.com/",
-  storageBucket: "gs://proyectoinvestigacion-4e50b.appspot.com"
-};*/
-
 
 @NgModule({
   declarations: [
