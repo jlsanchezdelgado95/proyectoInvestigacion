@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,23 +14,27 @@ import { MainComponent } from './main/main.component';
 
 //Librerías de firebase
 import { AngularFireModule } from '@angular/fire';
-/*import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';*/
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+/*import { AngularFireStorageModule } from '@angular/fire/storage';*/
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 //Le añado el servicio
 import { AngularFirestore } from '@angular/fire/firestore';
 import { PaginaNoEncontradaComponent } from './pagina-no-encontrada/pagina-no-encontrada.component';
+import { CreateTareasComponent } from './main/create-tareas/create-tareas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MainComponent,
-    PaginaNoEncontradaComponent
+    PaginaNoEncontradaComponent,
+    CreateTareasComponent
   ],
   imports: [
+    NgbModule,
     AngularFireModule.initializeApp(environment.fireBaseConfig),
+    AngularFirestoreModule,
     AngularFireAuthModule,
     BrowserModule,
     RouterModule,
@@ -41,4 +46,6 @@ import { PaginaNoEncontradaComponent } from './pagina-no-encontrada/pagina-no-en
   providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  db = AngularFirestoreModule;
+ }
