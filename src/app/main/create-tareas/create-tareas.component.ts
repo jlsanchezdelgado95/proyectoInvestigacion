@@ -16,7 +16,7 @@ export class CreateTareasComponent implements OnInit {
     nombre: new FormControl('', Validators.required),
     fecha: new FormControl('', Validators.required),
     detalle: new FormControl(''),
-    usuario: new FormControl('')
+    usuario: new FormControl(''),
   });
 
   closed = true;

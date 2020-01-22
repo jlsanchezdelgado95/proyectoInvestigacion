@@ -23,4 +23,8 @@ export class MainService {
     return this.firestore.collection("tareas").doc(documentId).set(data);
   }
 
+  deleteTarea(documentId: string){
+    return this.firestore.collection("tareas").doc(documentId).delete();
+  }
+
 }

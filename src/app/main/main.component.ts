@@ -31,8 +31,6 @@ export class MainComponent implements OnInit {
         this.mainService.getTareas().subscribe((tareasService) => {
           this.tareas = [];
           tareasService.forEach((tarea: any) => {
-            //console.log(typeof tarea.payload.doc.data().fecha);
-            //console.log(tarea.payload.doc.data().fecha);
             const date = tarea.payload.doc.data().fecha.toDate();
             this.anyo = date.getFullYear();
             this.mes = date.getMonth() + 1;
@@ -41,10 +39,10 @@ export class MainComponent implements OnInit {
             this.tareas.push({
               nombre: tarea.payload.doc.data().nombre,
               detalle: tarea.payload.doc.data().detalle,
-              fecha: fechaBuena
+              fecha: fechaBuena,
+              id: tarea.payload.doc.id
             })
           })
-          //console.log(this.tareas);
         });
       } else {
         console.log("No logueado");
@@ -56,6 +54,14 @@ export class MainComponent implements OnInit {
   /*mostrarTareas(){
     console.log(this.tareas);
   }*/
+
+  deleteTarea(documentId) {
+    this.mainService.deleteTarea(documentId).then(() => {
+      console.log("DOCUMENTO ELIMINADO");
+    }, error => {
+      console.error(error);
+    })
+  }
 
   desconectarse() {
     this.authService.salirSesionService();
