@@ -9,6 +9,15 @@ body {
       background: url("src/assets/loginWeb.jpg");
     }
   }
+
+  .my-custom-scrollbar {
+    position: relative;
+    height: 80%;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
   
   .pricing .card {
     border: none;

@@ -16,6 +16,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class MainComponent implements OnInit {
   @ViewChild("bienvenida", {static: false}) bienvenida: ElementRef;
   @ViewChild("nuevaTarea", {static: false}) nuevaTarea: ElementRef;
+  @ViewChild("deleteModal", {static: false}) deleteTareaRef: ElementRef;
 
   public documentId = null;
   public currentStatus = 1;
@@ -83,9 +84,10 @@ export class MainComponent implements OnInit {
     })
   }
 
-  deleteTarea(documentId) {
-    this.mainService.deleteTarea(documentId).then(() => {
+  deleteTarea() {
+    this.mainService.deleteTarea(this.tareaId).then(() => {
       console.log("DOCUMENTO ELIMINADO");
+      this.modalService.dismissAll(this.deleteTareaRef);
     }, error => {
       console.error(error);
     })
@@ -102,6 +104,7 @@ export class MainComponent implements OnInit {
       this.modalService.open(content);
     } else {
       this.tareaId = tareaId;
+      console.log(this.tareaId);
       this.nombre = tarea.nombre;
       this.fecha = tarea.fecha;//no lo coge en el date
       this.detalle = tarea.detalle;
@@ -120,6 +123,7 @@ export class MainComponent implements OnInit {
     }
     this.mainService.createTarea(data).then(() => {
       console.log('Documento creado exitósamente!');
+      this.modalService.dismissAll(this.nuevaTarea);
       this.modalService.open(this.nuevaTarea);
       this.newTareaForm.setValue({
         nombre: '',
@@ -132,30 +136,6 @@ export class MainComponent implements OnInit {
     });
 
   }
-
-  /*
-  else {
-      let data = {
-        nombre: form.nombre,
-        fecha: form.fecha,
-        detalle: form.detalle,
-        usuario: form.usuario
-      }
-      this.mainService.updateTarea(documentId, data).then(() => {
-        this.currentStatus = 1;
-        this.newTareaForm.setValue({
-          nombre: '',
-          fecha: '',
-          detalle: '',
-          usuario: ''
-        });
-        console.log('Documento editado exitósamente');
-      }, (error) => {
-        console.log(error);
-      });
-    }
-  
-  */
 
   updateTarea(form, documentId = this.documentId) {
     const fechaBuena = new Date(new Date(form.fecha).getTime());
@@ -176,21 +156,10 @@ export class MainComponent implements OnInit {
         /*usuario: ''*/
       });
       console.log('Documento editado exitósamente');
+      this.modalService.dismissAll(this.updateTarea);
     }, (error) => {
       console.log(error);
     });
-    /*let update = this.mainService.getTarea(documentId).subscribe((tarea) => {
-      this.currentStatus = 2;
-      this.documentId = documentId;
-      this.newTareaForm.setValue({
-        nombre: tarea.payload.data()['nombre'],
-        fecha: tarea.payload.data()['fecha'],
-        detalle: tarea.payload.data()['detalle'],
-        usuario: tarea.payload.data()['usuario'],
-        id: documentId
-      });
-      update.unsubscribe();
-    });*/
   }
 
 }
