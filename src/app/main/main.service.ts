@@ -11,11 +11,15 @@ export class MainService {
 
   constructor(private firestore: AngularFirestore) { }
 
+  getTarea(documentId: string) {
+    return this.firestore.collection("tareas").doc(documentId).snapshotChanges();
+  }
+
   getTareas() {
     return this.firestore.collection("tareas").snapshotChanges();
   }
 
-  createTarea(data: { nombre: string, fecha: Data, detalle: string, usuario: string }) {
+  createTarea(data: { nombre: string, fecha: Data, detalle: string, /*usuario: string*/ }) {
     return this.firestore.collection("tareas").add(data);
   }
 
@@ -23,7 +27,7 @@ export class MainService {
     return this.firestore.collection("tareas").doc(documentId).set(data);
   }
 
-  deleteTarea(documentId: string){
+  deleteTarea(documentId: string) {
     return this.firestore.collection("tareas").doc(documentId).delete();
   }
 

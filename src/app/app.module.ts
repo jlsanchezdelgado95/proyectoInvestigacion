@@ -46,6 +46,5 @@ import { CreateTareasComponent } from './main/create-tareas/create-tareas.compon
   providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
-  db = AngularFirestoreModule;
+export class AppModule {
  }
