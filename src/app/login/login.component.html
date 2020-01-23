@@ -6,7 +6,9 @@
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card card-signin my-5">
                     <div class="card-body">
-                        <h1 class="text-center">DiaryMaker <i class="fas fa-book"></i></h1>
+                        <h1 class="text-center">DiaryMaker
+                            <!--<i class="fas fa-book"></i>-->
+                        </h1>
                         <h5 class="card-title text-center">Accede</h5>
                         <form class="form-signin">
                             <div class="form-label-group">
@@ -38,6 +40,29 @@
                         </form>
                     </div>
                 </div>
+                <!-- ALERTS ACCESO-->
+                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedLogin1" (close)="closed=true">
+                    <strong>Vaya!</strong> Este usuario no existe.
+                </ngb-alert>
+                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedLogin2" (close)="closed2=true">
+                    <strong>Hey!</strong> La contraseña no coincide.
+                </ngb-alert>
+                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedLogin3" (close)="closed2=true">
+                    <strong>Vaya!</strong> Problemas con el correo electrónico.
+                </ngb-alert>
+                <!-- -->
+
+                <!-- ALERTS REGISTRO-->
+                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedRegis1" (close)="closed=true">
+                    <strong>Cuidado!</strong> Hay un problema con el correo electrónico.
+                </ngb-alert>
+                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedRegis2" (close)="closed2=true">
+                    <strong>Vaya!</strong> Se esta usando este correo electrónico.
+                </ngb-alert>
+                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedRegis3" (close)="closed2=true">
+                    <strong>Vaya!</strong> Se necesita un mínimo de 6 carácteres de contraseña.
+                </ngb-alert>
+                <!-- -->
             </div>
         </div>
     </div>
