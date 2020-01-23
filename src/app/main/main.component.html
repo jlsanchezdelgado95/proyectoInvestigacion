@@ -7,6 +7,40 @@
                     <div class="card-body">
                         <h3 class="card-title text-uppercase text-center">Bienvenido: {{email}}</h3>
                         <h4 class="text-center">Tus tareas</h4>
+                        <!-- MODAL BIENVENIDA -->
+                        <ng-template #bienvenida let-c="close" let-d="dismiss" id="bienvenida">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">BIENVENID@</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Gracias por venir {{email}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark"
+                                    (click)="c('Save click')">Continuar</button>
+                            </div>
+                        </ng-template>
+                        <!-- MODAL BIENVENIDA -->
+                        <!-- MODAL NUEVA TAREA -->
+                        <ng-template #nuevaTarea let-c="close" let-d="dismiss" id="nuevaTarea">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">Enhorabuena</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Has añadido una nueva tarea
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark"
+                                    (click)="c('Save click')">Continuar</button>
+                            </div>
+                        </ng-template>
+                        <!-- MODAL NUEVA TAREA -->
                         <!-- MODAL CREATE -->
                         <ng-template #create let-c="close" let-d="dismiss" id="create">
                             <div class="modal-header">

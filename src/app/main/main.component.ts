@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import { AuthenticationService } from 'src/app/login/authentication.service';
 import { MainService } from 'src/app/main/main.service';
@@ -14,6 +14,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  @ViewChild("bienvenida", {static: false}) bienvenida: ElementRef;
+  @ViewChild("nuevaTarea", {static: false}) nuevaTarea: ElementRef;
 
   public documentId = null;
   public currentStatus = 1;
@@ -54,6 +56,7 @@ export class MainComponent implements OnInit {
     this.authService.logeado().subscribe(auth => {
       if (auth) {
         console.log("Logueado");
+        this.modalService.open(this.bienvenida);
         this.authService.userData.subscribe(res => {
           this.email = res.email;
         })
@@ -117,6 +120,7 @@ export class MainComponent implements OnInit {
     }
     this.mainService.createTarea(data).then(() => {
       console.log('Documento creado exitósamente!');
+      this.modalService.open(this.nuevaTarea);
       this.newTareaForm.setValue({
         nombre: '',
         fecha: '',
