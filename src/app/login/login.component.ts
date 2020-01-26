@@ -34,8 +34,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  acceder() {
+  resetAllAlerts() {
     this.resetAlertsLogin();
+    this.resetAlertsRegis();
+  }
+
+  acceder() {
+    this.resetAllAlerts();
     this.authService.accederService(this.email.value, this.password.value).then(res => {
       //console.log("Logueado");
       this.router.navigateByUrl("/main");
@@ -62,7 +67,7 @@ export class LoginComponent implements OnInit {
   }
 
   registrarse() {
-    this.resetAlertsRegis();
+    this.resetAllAlerts();
     this.authService.registarseService(this.email.value, this.password.value).then(res => {
       console.log("Registrado");
       this.closedRegis4 = false;
@@ -78,7 +83,7 @@ export class LoginComponent implements OnInit {
           this.closedRegis3 = false;
         } else if (e.message == "A network error (such as timeout, interrupted connection or unreachable host) has occurred.") {
           this.closedRegis5 = false;
-        } 
+        }
       });
   }
 
