@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
     this.closedLogin1 = true;
     this.closedLogin2 = true;
     this.closedLogin3 = true;
+    this.closedLogin4 = true;
   }
 
   registrarse() {
@@ -85,6 +86,8 @@ export class LoginComponent implements OnInit {
     this.closedRegis1 = true;
     this.closedRegis2 = true;
     this.closedRegis3 = true;
+    this.closedRegis4 = true;
+    this.closedRegis5 = true;
   }
 
 }
