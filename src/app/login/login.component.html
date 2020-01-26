@@ -41,26 +41,35 @@
                     </div>
                 </div>
                 <!-- ALERTS ACCESO-->
-                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedLogin1" (close)="closed=true">
+                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedLogin1" (close)="closedLogin1=true">
                     <strong>Vaya!</strong> Este usuario no existe.
                 </ngb-alert>
-                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedLogin2" (close)="closed2=true">
+                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedLogin2" (close)="closedLogin2=true">
                     <strong>Hey!</strong> La contraseña no coincide.
                 </ngb-alert>
-                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedLogin3" (close)="closed2=true">
+                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedLogin3" (close)="closedLogin3=true">
                     <strong>Vaya!</strong> Problemas con el correo electrónico.
+                </ngb-alert>
+                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedLogin4" (close)="closedLogin4=true">
+                    <strong>Vaya!</strong> Problemas de conexión.
                 </ngb-alert>
                 <!-- -->
 
                 <!-- ALERTS REGISTRO-->
-                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedRegis1" (close)="closed=true">
+                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedRegis1" (close)="closedRegis1=true">
                     <strong>Cuidado!</strong> Hay un problema con el correo electrónico.
                 </ngb-alert>
-                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedRegis2" (close)="closed2=true">
+                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedRegis2" (close)="closedRegis2=true">
                     <strong>Vaya!</strong> Se esta usando este correo electrónico.
                 </ngb-alert>
-                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedRegis3" (close)="closed2=true">
+                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedRegis3" (close)="closedRegis3=true">
                     <strong>Vaya!</strong> Se necesita un mínimo de 6 carácteres de contraseña.
+                </ngb-alert>
+                <ngb-alert [dismissible]="false" type=success *ngIf="!closedRegis4" (close)="closedRegis4=true">
+                    <strong>Enhorabuena!</strong> Su registro se ha hecho correctamente.
+                </ngb-alert>
+                <ngb-alert [dismissible]="false" type=warning *ngIf="!closedRegis4" (close)="closedRegis4=true">
+                    <strong>Vaya!</strong> Problemas de conexión.
                 </ngb-alert>
                 <!-- -->
             </div>

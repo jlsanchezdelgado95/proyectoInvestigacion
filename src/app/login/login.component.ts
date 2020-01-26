@@ -19,10 +19,13 @@ export class LoginComponent implements OnInit {
   closedRegis1 = true;
   closedRegis2 = true;
   closedRegis3 = true;
+  closedRegis4 = true;
+  closedRegis5 = true;
 
   closedLogin1 = true;
   closedLogin2 = true;
   closedLogin3 = true;
+  closedLogin4 = true;
 
   constructor(private firebase: AngularFirestore, private authService: AuthenticationService,
     private router: Router) {
@@ -45,6 +48,8 @@ export class LoginComponent implements OnInit {
           this.closedLogin2 = false;
         } else if (e.message == "The email address is badly formatted.") {
           this.closedLogin3 = false;
+        } else if (e.message == "A network error (such as timeout, interrupted connection or unreachable host) has occurred.") {
+          this.closedLogin4 = false;
         }
       });
   }
@@ -59,6 +64,7 @@ export class LoginComponent implements OnInit {
     this.resetAlertsRegis();
     this.authService.registarseService(this.email.value, this.password.value).then(res => {
       console.log("Registrado");
+      this.closedRegis4 = false;
     })
       .catch(e => {
         console.log("No se ha podido registrar", e.message)
@@ -69,7 +75,9 @@ export class LoginComponent implements OnInit {
           this.closedRegis1 = false;
         } else if (e.message == "The password must be 6 characters long or more.") {
           this.closedRegis3 = false;
-        }
+        } else if (e.message == "A network error (such as timeout, interrupted connection or unreachable host) has occurred.") {
+          this.closedRegis5 = false;
+        } 
       });
   }
 

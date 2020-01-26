@@ -53,12 +53,12 @@
                                 <form (ngSubmit)="newTarea(newTareaForm.value)" [formGroup]="newTareaForm">
                                     <h4>
                                         <div class="form-group">
-                                            <label>Nombre</label>
+                                            <label>Nombre:</label>
                                             <p></p>
                                             <input type="text" formControlName="nombre">
                                         </div>
                                         <div class="form-group">
-                                            <label>Fecha</label>
+                                            <label>Fecha:</label>
                                             <p></p>
                                             <input type="date" formControlName="fecha">
                                         </div>
@@ -111,12 +111,25 @@
                                         value="Guardar">
                                 </form>
                             </div>
-                            <div class="modal-footer">
+                            <!--<div class="modal-footer">
                                 <button type="button" class="btn btn-outline-dark"
                                     (click)="c('Save click')">Save</button>
-                            </div>
+                            </div>-->
                         </ng-template>
                         <!-- MODAL EDIT -->
+                        <!-- MODAL MENSAJE EDIT -->
+                        <ng-template #updateModal let-c="close" let-d="dismiss" id="updateModal">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">Enhorabuena!</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Se ha podido modificar correctamente tu tarea.
+                            </div>
+                        </ng-template>
+                        <!-- MODAL MENSAJE EDIT -->
                         <!-- TABLA TAREAS -->
                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
                             <table class="table">
@@ -154,14 +167,29 @@
                             ¿Seguro que quieres eliminar esta tarea?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-dark"
-                                (click)="deleteTarea()">Si</button>
+                            <button type="button" class="btn btn-outline-dark" (click)="deleteTarea()">Si</button>
                             <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">No</button>
                         </div>
                     </ng-template>
                     <!-- MODAL DELETE -->
+                    <!-- MODAL DESPEDIDA -->
+                    <ng-template #despedidaModal let-c="close" let-d="dismiss" id="despedidaModal">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="modal-basic-title">¡Gracias por visitarnos!</h2>
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h3 class="text-center">Hasta otra.</h3>
+                        </div>
+                        <!--<div class="modal-footer">
+                            <h3>Hasta otra.</h3>
+                        </div>-->
+                    </ng-template>
+                    <!-- MODAL DESPEDIDA -->
                     <div class="card-footer">
-                        <h4 class="text-center mb-3" (click)="open(create)">Nueva tarea
+                        <h4 class="text-center mb-3" (click)="openCreate(create)">Nueva tarea
                             <i class="fas fa-plus-circle"></i>
                         </h4>
                         <a class="btn btn-block btn-info text-uppercase text-white" (click)="desconectarse()">Cerrar

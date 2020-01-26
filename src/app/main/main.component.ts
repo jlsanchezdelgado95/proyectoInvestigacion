@@ -14,9 +14,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  @ViewChild("bienvenida", {static: false}) bienvenida: ElementRef;
-  @ViewChild("nuevaTarea", {static: false}) nuevaTarea: ElementRef;
-  @ViewChild("deleteModal", {static: false}) deleteTareaRef: ElementRef;
+  @ViewChild("bienvenida", { static: false }) bienvenida: ElementRef;
+  @ViewChild("nuevaTarea", { static: false }) nuevaTarea: ElementRef;
+  @ViewChild("deleteModal", { static: false }) deleteTareaRef: ElementRef;
+  @ViewChild("despedidaModal", { static: false }) despedidaModalRef: ElementRef;
+  @ViewChild("updateModal", { static: false }) updateModalRef: ElementRef;
 
   public documentId = null;
   public currentStatus = 1;
@@ -56,7 +58,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {//Controlo que no entran en el main sin loguearse
     this.authService.logeado().subscribe(auth => {
       if (auth) {
-        console.log("Logueado");
+        //console.log("Logueado");
         this.modalService.open(this.bienvenida);
         this.authService.userData.subscribe(res => {
           this.email = res.email;
@@ -78,7 +80,7 @@ export class MainComponent implements OnInit {
           })
         });
       } else {
-        console.log("No logueado");
+        //console.log("No logueado");
         this.router.navigateByUrl('/login');
       }
     })
@@ -96,7 +98,12 @@ export class MainComponent implements OnInit {
   desconectarse() {
     this.authService.salirSesionService();
     this.email = undefined;
+    this.modalService.open(this.despedidaModalRef);
     this.router.navigateByUrl("/login");
+  }
+
+  openCreate(content) {
+    this.modalService.open(content);
   }
 
   open(content, tarea, tareaId) {
@@ -104,7 +111,6 @@ export class MainComponent implements OnInit {
       this.modalService.open(content);
     } else {
       this.tareaId = tareaId;
-      console.log(this.tareaId);
       this.nombre = tarea.nombre;
       this.fecha = tarea.fecha;//no lo coge en el date
       this.detalle = tarea.detalle;
@@ -157,6 +163,7 @@ export class MainComponent implements OnInit {
       });
       console.log('Documento editado exitósamente');
       this.modalService.dismissAll(this.updateTarea);
+      this.modalService.open(this.updateModalRef);
     }, (error) => {
       console.log(error);
     });
